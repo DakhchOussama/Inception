@@ -1,0 +1,23 @@
+# DB config
+DB_HOST=mariadb
+DB_NAME=inception
+
+# DB users
+DB_USER=odakhch
+DB_PASSWORD=root
+DB_ROOT_USER=root #???
+DB_ROOT_PASSWORD=root #??
+
+# WP
+WP_ROOT_USER=oussamadakhch
+WP_ROOT_PASSWORD=root
+WP_ROOT_EMAIL=odakhch@student.1337.ma
+WP_USER=oussama
+WP_PASSWORD=root
+WP_USER_EMAIL=odakhch@gmail.com
+
+WP_TITLE=Inception
+WP_URL=https://odakhch.42.fr
+
+FTP_CLIENT=client
+FTP_PASS=pass
