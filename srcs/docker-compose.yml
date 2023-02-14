@@ -1,0 +1,129 @@
+version: '3.7'
+
+# create a volume for mariadb and wordpress data
+volumes:
+  my_mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/odakhch/Desktop/data/my_mariadb
+      o: bind
+  my_wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/odakhch/Desktop/data/my_wordpress
+      o: bind
+
+# create a network for containers
+networks:
+  inceptionNet:
+    driver: bridge
+
+# create the containers
+services:
+  mariadb:
+    build: ./requirements/mariadb
+    image: mariadb
+    container_name: mariadb
+    restart: on-failure
+    ports:
+      - 3306:3306
+    env_file:
+      - .env
+    volumes:
+      - my_mariadb:/var/lib/mysql
+    networks:
+      - inceptionNet
+
+  nginx:
+    build: ./requirements/nginx
+    image: nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - 443:443
+    volumes:
+      - my_wordpress:/var/www/html
+    depends_on:
+      - wordpress
+    networks:
+      - inceptionNet
+
+  wordpress:
+    build: ./requirements/wordpress
+    image: wordpress
+    container_name: wordpress
+    ports:
+      - 9000:9000
+    restart: on-failure
+    env_file:
+      - .env
+    volumes:
+      - my_wordpress:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+      - inceptionNet
+
+  redis:
+    build: ./requirements/bonus/redis
+    image: redis
+    container_name: redis
+    restart: on-failure
+    networks:
+      - inceptionNet
+    ports:
+      - "6379:6379"
+
+  ftp:
+    build: ./requirements/bonus/FTP
+    image: ftp
+    container_name: ftp
+    restart: always
+    env_file:
+      - .env
+    networks:
+      - inceptionNet
+    ports:
+      - "20:20"
+      - "21:21"
+      - "40000-40005:40000-40005"
+    volumes:
+      - my_wordpress:/var/www/html
+
+  adminer:
+    build: ./requirements/bonus/adminer
+    image: adminer
+    container_name: adminer
+    restart: on-failure
+    networks:
+      - inceptionNet
+    ports:
+      - "8080:8080"
+
+  website:
+    build: ./requirements/bonus/website
+    image: website
+    container_name: website
+    restart: on-failure
+    networks:
+      - inceptionNet
+    ports:
+      - "82:82"
+
+  cadvisor:
+    build: ./requirements/bonus/CAdvisor
+    image: cadvisor
+    container_name: cadvisor
+    restart: always
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - "8081:8080"
+    privileged: true
+    networks:
+      - inceptionNet

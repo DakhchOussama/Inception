@@ -1,0 +1,27 @@
+server
+{
+    listen 443 http2 ssl;
+    listen [::]:443 http2 ssl;
+
+    server_name odakhch.42.fr www.odakhch.42.fr;
+
+    ssl_certificate /etc/ssl/certs/odakhch.crt;
+    ssl_certificate_key /etc/ssl/private/odakhch.key;
+
+    ssl_protocols TLSv1.3;
+
+    root /var/www/html;
+    index index.php index.html index.htm;
+
+    location / {
+    try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass wordpress:9000;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_index index.php;
+    }
+}
