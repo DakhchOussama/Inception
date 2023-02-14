@@ -2,15 +2,7 @@
 
 **Devops** :  is a set of practices that combines software development and IT operations. It aims to shorten the systems development life cycle and provide continuous delivery with high software quality.
 
-https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6dac2963-f2f7-4292-b278-c922c94ac01a/Untitled.png
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/30126d31-b94f-4216-a2f0-92a9a8284257/Untitled.png)
-
 To Watch : [https://www.youtube.com/watch?v=Xrgk023l4lI&ab_channel=Simplilearn](https://www.youtube.com/watch?v=Xrgk023l4lI&ab_channel=Simplilearn)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d03ffeb8-8c4b-456f-840b-bb08556ea8c7/Untitled.png)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/17ac9ba1-5a64-4b12-87ff-57f55c8a8c08/Untitled.png)
 
 **Docker** : is an open source platform that enables developers to build, deploy, run, update and manage *containers* —standardized, executable components that combine application source code with the operating system (OS) libraries and dependencies required to run that code in any environment.
 
@@ -28,8 +20,6 @@ A container can also be considered as a cohesive software unit that packages up 
 Containers are executable units of software in which application code is packaged, along with its libraries and dependencies, in common ways so that it can be run anywhere, whether it be on desktop, traditional IT, or the cloud.
 
 Suppose you built a simple program A to get number. And you are using a library B to get random number to program A. Let's say you are creating a program C which uses program A which in turn depends upon library B. So now program A is your library and library B becomes your dependency.
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e22a9f2c-b8d8-49b0-a9f5-3a6ba772d124/Untitled.png)
 
 - **********************************************More about containers :**********************************************
     
@@ -51,11 +41,7 @@ Suppose you built a simple program A to get number. And you are using a library 
         **Features in containers refer to the capabilities and characteristics that make containers a powerful tool for deploying and managing applications**
         
     
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b3e9ba10-f80d-45b2-bc21-41c789dfa552/Untitled.png)
-    
     *chroot* command in Linux/Unix system is used to change the root directory. Every process/command in Linux/Unix like systems has a current working directory called **root directory** It changes the root directory for currently running processes as well as its child processes. A process/command that runs in such a modified environment cannot access files outside the root directory. This modified environment is known as “**[chroot jail](https://www.geeksforgeeks.org/linux-virtualization-using-chroot-jail/)**” or **“jailed directory”**. Some root user and privileged process are allowed to use chroot command.
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/359b29dc-1b08-41df-801c-64d678a0f54c/Untitled.png)
     
     What is needed to run an own chroot environment? Not that much, since something like this already works:
     
@@ -67,9 +53,7 @@ Suppose you built a simple program A to get number. And you are using a library 
     ```
     
     We create a new root directory, copy a bash shell and its dependencies in and run `chroot`. This jail is pretty useless: All we have at hand is bash and its builtin functions like `cd` and `pwd`
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4a9851bb-43f8-4bfc-bd5c-564aa1d7691b/Untitled.png)
-    
+     
     The current working directory is left unchanged when calling chroot via a syscall, whereas relative paths can still refer to files outside of the new root. This call changes only the root path and nothing else. Beside this, further calls to chroot do not stack and they will override the current jail. Only privileged processes with the capability `CAP_SYS_CHROOT`
      are able to call chroot.
     
@@ -95,8 +79,6 @@ Suppose you built a simple program A to get number. And you are using a library 
         Or when you copy, edit, or delete a file, the file system handles it under the hood.
         
         Whenever you download a file or access a web page over the Internet, a file system is involved too.
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5a3c03a4-77c2-4c7a-87c2-bc254af075c5/Untitled.png)
         
     
     There is no process isolation available at all. We can even kill programs running outside of the jail, what a metaphor! Let’s peek into the network devices:
@@ -152,8 +134,6 @@ Suppose you built a simple program A to get number. And you are using a library 
         **clone**
         
         The `[clone(2)](http://man7.org/linux/man-pages/man2/clone.2.html)` API function creates a new child process, in a manner similar to `[fork(2)](http://man7.org/linux/man-pages/man2/fork.2.html)`. Unlike `fork(2)`, the `clone(2)`API allows the child process to share parts of its execution context with the calling process, such as the memory space, the table of file descriptors, and the table of signal handlers. You can pass different namespace flags to `clone(2)` to create new namespaces for the child process.
-        
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3095c4d1-6ad7-44f3-ad49-f78ea07b7774/Untitled.png)
         
         **unshare**
         
@@ -211,8 +191,6 @@ Suppose you built a simple program A to get number. And you are using a library 
         
         The PID namespace was introduced in Linux 2.6.24 (2008) and gives processes an independent set of process identifiers (PIDs). This means that processes which reside in different namespaces can own the same PID. In the end a process has two PIDs: the PID inside the namespace, and the PID outside the namespace on the host system. The PID namespaces can be nested, so if a new process is created it will have a PID for each namespace from its current namespace up to the initial PID namespace.
         
-        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/643bd9a3-50e9-4a20-a3b4-d07f1f2c9179/Untitled.png)
-        
         The first process created in a PID namespace gets the number 1 and gains all the same special treatment as the usual init process. For example, all processes within the namespace will be re-parented to the namespace’s PID 1 rather than the host PID 1. In addition the termination of this process will immediately terminate all processes in its PID namespace and any descendants. Let’s create a new PID namespace:
         
         ## **Network (net)**
@@ -249,10 +227,7 @@ Suppose you built a simple program A to get number. And you are using a library 
         
         In simple words, when you open a file, the operating system creates an entry to represent that file and store the information about that opened file. So if there are 100 files opened in your OS then there will be 100 entries in OS (somewhere in kernel). These entries are represented by integers like (...100, 101, 102....). This entry number is the file descriptor. So it is just an integer number that uniquely represents an opened file for the process. If your process opens 10 files then your Process table will have 10 entries for file descriptors.
         
-        Similarly, when you open a network socket, it is also represented by an integer and it is called Socket Descriptor. I hope you understand.
-        
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a03924aa-5896-4720-a5ec-bcc2836dbdcb/Untitled.png)
+        Similarly, when you open a network socket, it is also represented by an integer and it is called Socket Descriptor. I hope you understand. 
 
 **Docker Engine** is an open source containerization technology for building and containerizing your applications. Docker Engine acts as a client-server application with:
 
@@ -276,12 +251,6 @@ To run the daemon with debug output, use `dockerd --debug` or add `"debug": t
 
 Docker daemon evaluates the request, talks to underlying os and provisions your container.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/756ba094-e56b-4e6c-8a02-7c6fdddb772c/Untitled.png)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a2d84d16-a37e-4561-8556-5185e5579696/Untitled.png)
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b2cda565-4c41-4948-86dc-589e45d1743c/Untitled.png)
-
 ### **Docker Images**
 
 It is a kind of ready-to-use software read-only template crafted with source codes, libraries, external dependencies, tools, and other miscellaneous files that are needed for any software application to run successfully on any platform or OS.
@@ -290,8 +259,6 @@ The developer community also likes to call it Snapshots, representing the app an
 
 Docker builds images automatically by reading the instructions from a DockerFile. It is a text file that contains all commands needed to build a given image.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fd13ec83-2422-4079-ab5f-a2510540c1b4/Untitled.png)
-
 ## **Why Docker Containers Are Useful?**
 
 All the docker images become docker containers when they run on Docker Engine and these containers are popular amongst developers and organizations of all shapes and sizes because it is :
@@ -299,8 +266,6 @@ All the docker images become docker containers when they run on Docker Engine an
 - **Standardized:** Docker created the industry standard for containers, so they could be portable anywhere.
 - **Lightweight:** Containers share the machine’s OS system kernel and therefore do not require an OS per application, driving higher server efficiencies and reducing server and licensing costs.
 - **Secure:** Applications are safer in containers and Docker provides the strongest default isolation capabilities in the industry.
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c51772d2-164e-4a9c-8fcf-f0d308a87c90/Untitled.png)
 
 ## Docker Commands :
 
@@ -420,8 +385,6 @@ In this case, **we added the *stdin_open* and *tty* options in the *docker
 
 Layers are a result of the way Docker images are built. Each step in a Dockerfile creates a new “layer” that’s essentially a diff of the filesystem changes since the last step. Metadata instructions such as `LABEL` and `MAINTAINER` do not create layers because they don’t affect the filesystem.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/efd5712b-d7a5-4d74-a341-e547933841d3/Untitled.png)
-
 **ENTRYPOINT** allows specifying a command along with the parameters.
 
 - **CMD.** Sets default parameters that can be overridden from the Docker Command Line Interface (CLI) when a container is running.
@@ -432,8 +395,6 @@ Layers are a result of the way Docker images are built. Each step in a Dockerfil
 Any `RUN`, `CMD`, `ADD`, `COPY`, or `ENTRYPOINT` command will be executed in the specified working directory.
 
 If the `WORKDIR` command is not written in the Dockerfile, it will automatically be created by the Docker compiler. Hence, it can be said that the command performs `mkdir`and `cd`implicitly.
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6501ef2a-e70e-483f-882a-4aba78996618/Untitled.png)
 
 You can think of `WORKDIR` like a `cd` inside the container (it affects commands that come later in the Dockerfile, like the `RUN` command). If you removed `WORKDIR` in your example above, `RUN npm install` wouldn't work because you would not be in the `/usr/src/app` directory inside your container.
 
@@ -1337,8 +1298,6 @@ curl is a command-line tool that allows you to transfer data to or from a server
 ## Redis :
 
 **Redis** is an in-memory data store that can be used as a cache and a database (caching). It is often used for high-performance, scalable web applications, providing quick access to data through its in-memory storage and support for complex data structures. Redis supports multiple data structures such as strings, hashes, lists, sets, and sorted sets.
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/982dab5b-4731-40f9-9274-77d418658558/Untitled.png)
 
 ```jsx
 bind 0.0.0.0
