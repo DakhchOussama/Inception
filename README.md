@@ -2,7 +2,7 @@
 
 **Devops** :  is a set of practices that combines software development and IT operations. It aims to shorten the systems development life cycle and provide continuous delivery with high software quality.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6dac2963-f2f7-4292-b278-c922c94ac01a/Untitled.png)
+https://s3-us-west-2.amazonaws.com/secure.notion-static.com/6dac2963-f2f7-4292-b278-c922c94ac01a/Untitled.png
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/30126d31-b94f-4216-a2f0-92a9a8284257/Untitled.png)
 
