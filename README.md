@@ -55,10 +55,6 @@ We welcome contributions! To contribute to Project Inception, follow these steps
 5. Push to the branch: `git push origin feature/new-feature`.
 6. Open a pull request.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 Feel free to explore and enhance the functionalities of Project Inception!
 
 
