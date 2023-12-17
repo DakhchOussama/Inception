@@ -55,7 +55,9 @@ We welcome contributions! To contribute to Project Inception, follow these steps
 5. Push to the branch: `git push origin feature/new-feature`.
 6. Open a pull request.
 
-Feel free to explore and enhance the functionalities of Project Inception!
+If you want more informations, send your email Notion to my Email:
+
+📧 [oussamadakhch1999@gmail.com](mailto:oussamadakhch1999@gmail.com)
 
 
 
